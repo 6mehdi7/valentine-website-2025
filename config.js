@@ -33,7 +33,7 @@ const CONFIG = {
             nextBtn: "Next ❤️"                                         // Text for the next button
         },
         third: {
-            text: "Will you be my Valentine on February 14th, 2025? 🌹", // The big question!
+            text: "Will you be my Valentine on February 14th, 2025?🌹(12th because Fes..)", // The big question!
             yesBtn: "Yes!",                                             // Text for "Yes" button
             noBtn: "No"                                                 // Text for "No" button
         }
@@ -42,9 +42,9 @@ const CONFIG = {
     // Love meter messages
     // They show up depending on how far they slide the meter
     loveMessages: {
-        extreme: "WOOOOW You love me that much?? 🥰🚀💝",  // Shows when they go past 5000%
-        high: "To infinity and beyond! 🚀💝",              // Shows when they go past 1000%
-        normal: "And beyond! 🥰"                           // Shows when they go past 100%
+        extreme: "WOOOOW You love me that much?? LETS GOOOO !!! 🥰🚀",  // Shows when they go past 5000%
+        high: "OK OK I BELIEVE YOU! 🚀💝",              // Shows when they go past 1000%
+        normal: "That's it ?..."                           // Shows when they go past 100%
     },
 
     // Messages that appear after they say "Yes!"
@@ -62,6 +62,9 @@ const CONFIG = {
         buttonBackground: "#ff6b6b",     // Button color (should stand out against the background)
         buttonHover: "#ff8787",          // Button hover color (slightly lighter than buttonBackground)
         textColor: "#ff4757"             // Text color (make sure it's readable!)
+        noButtonBackground: "#444",   // ✅ NEW
+        noButtonHover: "#666",        // ✅ NEW
+    
     },
 
     // Animation settings
