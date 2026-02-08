@@ -80,6 +80,48 @@ window.addEventListener('DOMContentLoaded', () => {
     // Create initial floating elements
     createFloatingElements();
 
+    // Love meter functionality (initialize after DOM exists)
+    const loveMeter = document.getElementById('loveMeter');
+    const loveValue = document.getElementById('loveValue');
+    const extraLove = document.getElementById('extraLove');
+
+    function setInitialPosition() {
+        loveMeter.value = 100;
+        loveValue.textContent = 100;
+        loveMeter.style.width = '100%';
+    }
+
+    // Initialize love meter immediately
+    setInitialPosition();
+
+    loveMeter.addEventListener('input', () => {
+        const value = parseInt(loveMeter.value);
+        loveValue.textContent = value;
+
+        if (value > 100) {
+            extraLove.classList.remove('hidden');
+            const overflowPercentage = (value - 100) / 9900;
+            const extraWidth = overflowPercentage * window.innerWidth * 0.8;
+            loveMeter.style.width = `calc(100% + ${extraWidth}px)`;
+            loveMeter.style.transition = 'width 0.3s';
+
+            // Show different messages based on the value
+            if (value >= 5000) {
+                extraLove.classList.add('super-love');
+                extraLove.textContent = config.loveMessages.extreme;
+            } else if (value > 1000) {
+                extraLove.classList.remove('super-love');
+                extraLove.textContent = config.loveMessages.high;
+            } else {
+                extraLove.classList.remove('super-love');
+                extraLove.textContent = config.loveMessages.normal;
+            }
+        } else {
+            extraLove.classList.add('hidden');
+            extraLove.classList.remove('super-love');
+            loveMeter.style.width = '100%';
+        }
+    });
 });
 
 // Create floating hearts and bears
@@ -127,49 +169,7 @@ function moveButton(button) {
     button.style.top = y + 'px';
 }
 
-// Love meter functionality
-const loveMeter = document.getElementById('loveMeter');
-const loveValue = document.getElementById('loveValue');
-const extraLove = document.getElementById('extraLove');
-
-function setInitialPosition() {
-    loveMeter.value = 100;
-    loveValue.textContent = 100;
-    loveMeter.style.width = '100%';
-}
-
-loveMeter.addEventListener('input', () => {
-    const value = parseInt(loveMeter.value);
-    loveValue.textContent = value;
-    
-    if (value > 100) {
-        extraLove.classList.remove('hidden');
-        const overflowPercentage = (value - 100) / 9900;
-        const extraWidth = overflowPercentage * window.innerWidth * 0.8;
-        loveMeter.style.width = `calc(100% + ${extraWidth}px)`;
-        loveMeter.style.transition = 'width 0.3s';
-        
-        // Show different messages based on the value
-        if (value >= 5000) {
-            extraLove.classList.add('super-love');
-            extraLove.textContent = config.loveMessages.extreme;
-        } else if (value > 1000) {
-            extraLove.classList.remove('super-love');
-            extraLove.textContent = config.loveMessages.high;
-        } else {
-            extraLove.classList.remove('super-love');
-            extraLove.textContent = config.loveMessages.normal;
-        }
-    } else {
-        extraLove.classList.add('hidden');
-        extraLove.classList.remove('super-love');
-        loveMeter.style.width = '100%';
-    }
-});
-
-// Initialize love meter
-window.addEventListener('DOMContentLoaded', setInitialPosition);
-window.addEventListener('load', setInitialPosition);
+// (Love meter logic moved into DOMContentLoaded so elements exist before we access them.)
 
 // Celebration function
 function celebrate() {
@@ -196,5 +196,5 @@ function createHeartExplosion() {
         document.querySelector('.floating-elements').appendChild(heart);
         setRandomPosition(heart);
     }
+}
 
-} 
