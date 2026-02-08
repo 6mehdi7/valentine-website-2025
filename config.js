@@ -24,7 +24,7 @@ const CONFIG = {
             nextBtn: "Next ❤️"
         },
         third: {
-            text: "Will you be my Valentine on February 14th, 2025?🌹(Or 12th since you won't be here..)",
+            text: "Will you be my Valentine on February 14th, 2026?🌹(Or 12th since you won't be here..)",
             yesBtn: "Yes!",
             noBtn: "No"
         }
