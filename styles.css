@@ -5,6 +5,10 @@
     --background-color-2: #ffc3a0;
     --button-color: #ff6b6b;
     --button-hover: #ff8787;
+    
+    --no-button-color: #444;      /* ✅ NEW */
+    --no-button-hover: #666;      /* ✅ NEW */
+
     --text-color: #ff4757;
 
     /* Animations */
@@ -292,27 +296,12 @@ h2 {
     0% { opacity: 0.2; }
     100% { opacity: 0.3; }
 }
-
-.music-controls {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
+[id^="noBtn"] {
+    background: var(--no-button-color);
 }
 
-.music-btn {
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+[id^="noBtn"]:hover {
+    background: var(--no-button-hover);
 }
 
-.music-btn:hover {
-    transform: scale(1.05);
-    background: var(--secondary-color);
 } 
